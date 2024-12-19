@@ -29,7 +29,7 @@ export const HeroSection = () => {
             <div className="relative w-full pt-[56.25%]">
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl"
-                src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&mute=1&loop=1&playlist=e8nABOXvQN8"
+                src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&loop=1&playlist=e8nABOXvQN8"
                 title="Brodie Token Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
