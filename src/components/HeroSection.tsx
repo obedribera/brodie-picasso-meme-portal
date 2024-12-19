@@ -20,7 +20,16 @@ export const HeroSection = () => {
               <ArrowRight className="w-6 h-6" />
             </button>
           </div>
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 flex flex-col gap-4">
+            <div className="relative w-full pt-[56.25%]">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl"
+                src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&mute=1&loop=1&playlist=e8nABOXvQN8"
+                title="Brodie Token Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
             <img 
               src="/lovable-uploads/ae287fa0-06e4-4b0b-925d-10a48fd6c375.png"
               alt="Brodie the Picasso Dog"
