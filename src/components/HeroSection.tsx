@@ -3,6 +3,7 @@ import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
 import { TokenPrice } from "./TokenPrice";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   return (
@@ -63,13 +64,13 @@ export const HeroSection = () => {
                 Buy $BRODIE
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a 
-                href="#"
+              <Link 
+                to="/game"
                 className="inline-block bg-accent hover:bg-accent/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200"
               >
                 Game
                 <GamepadIcon className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4 animate-fade-in">
