@@ -8,8 +8,6 @@ interface Tab {
 
 const tabs: Tab[] = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About Us" },
-  { id: "roadmap", label: "Roadmap" },
 ];
 
 export const Navigation = () => {
