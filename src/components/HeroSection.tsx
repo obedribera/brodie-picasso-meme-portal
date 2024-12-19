@@ -1,4 +1,5 @@
 import { ArrowRight, Twitter, Instagram } from "lucide-react";
+import TelegramIcon from "./icons/TelegramIcon";
 
 export const HeroSection = () => {
   return (
@@ -23,6 +24,14 @@ export const HeroSection = () => {
                 className="text-primary hover:text-primary/80 transition-colors"
               >
                 <Twitter className="w-8 h-8" />
+              </a>
+              <a 
+                href="https://t.me" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                <TelegramIcon />
               </a>
               <a 
                 href="https://instagram.com" 
