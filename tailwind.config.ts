@@ -25,16 +25,16 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#9b87f5",
+          DEFAULT: "#8B5CF6", // Vivid Purple
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#F97316",
+          DEFAULT: "#1EAEDB", // Bright Blue
           foreground: "#ffffff",
         },
         accent: {
-          DEFAULT: "#FEF7CD",
-          foreground: "#1A1F2C",
+          DEFAULT: "#1A1F2C", // Dark Purple
+          foreground: "#ffffff",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
