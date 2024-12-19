@@ -26,11 +26,10 @@ export const HeroSection = () => {
               alt="Brodie the Picasso Dog"
               className="rounded-3xl shadow-2xl max-w-[500px] w-full hover:scale-105 transition-transform duration-300"
             />
-            <div className="relative w-full pt-[56.25%]">
+            <div className="hidden">
               <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl"
                 src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&loop=1&playlist=e8nABOXvQN8"
-                title="Brodie Token Video"
+                title="Brodie Token Audio"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
