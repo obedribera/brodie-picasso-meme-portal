@@ -4,7 +4,7 @@ import TikTokIcon from "./icons/TikTokIcon";
 
 export const HeroSection = () => {
   return (
-    <div className="min-h-screen pt-20 flex flex-col items-center justify-center bg-gradient-to-b from-accent to-white">
+    <div className="min-h-screen pt-20 flex flex-col items-center justify-center bg-gradient-to-br from-[#FEF7CD] via-[#E5DEFF] to-[#D3E4FD]">
       <div className="container mx-auto px-4 text-center">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
           <div className="md:w-1/2 text-left">
@@ -67,14 +67,6 @@ export const HeroSection = () => {
               alt="Brodie the Picasso Dog"
               className="rounded-3xl shadow-2xl max-w-[500px] w-full hover:scale-105 transition-transform duration-300"
             />
-            <div className="hidden">
-              <iframe
-                src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&loop=1&playlist=e8nABOXvQN8"
-                title="Brodie Token Audio"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
           </div>
         </div>
       </div>

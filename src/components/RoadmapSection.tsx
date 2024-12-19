@@ -18,7 +18,7 @@ export const RoadmapSection = () => {
   ];
 
   return (
-    <div className="py-20 bg-accent/30" id="roadmap">
+    <div className="py-20 bg-gradient-to-br from-[#FDE1D3] to-[#D3E4FD]" id="roadmap">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-primary">
           Roadmap
@@ -27,7 +27,7 @@ export const RoadmapSection = () => {
           {milestones.map((milestone, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl bg-white shadow-lg hover:transform hover:scale-105 transition-all"
+              className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg hover:transform hover:scale-105 transition-all"
             >
               <div className="text-secondary font-bold mb-2">
                 {milestone.phase}
