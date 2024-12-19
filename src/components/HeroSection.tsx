@@ -10,7 +10,7 @@ export const HeroSection = () => {
               🎨 Brodie
             </h1>
             <p className="text-2xl md:text-4xl mb-8 text-foreground">
-              The World's First Artistic Dog Token
+              The Picasso Dog Token
             </p>
             <p className="text-xl mb-12 text-gray-600">
               Join the pack and become part of the most creative community in crypto!
