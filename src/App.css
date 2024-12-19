@@ -3,8 +3,6 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  position: relative;
-  z-index: 1;
 }
 
 .logo {
@@ -41,21 +39,4 @@
 
 .read-the-docs {
   color: #888;
-}
-
-#particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  background: #ff0000 !important;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: #ff0000;
 }
