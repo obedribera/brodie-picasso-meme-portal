@@ -21,6 +21,11 @@ export const HeroSection = () => {
             </button>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4">
+            <img 
+              src="/lovable-uploads/ae287fa0-06e4-4b0b-925d-10a48fd6c375.png"
+              alt="Brodie the Picasso Dog"
+              className="rounded-3xl shadow-2xl max-w-[500px] w-full hover:scale-105 transition-transform duration-300"
+            />
             <div className="relative w-full pt-[56.25%]">
               <iframe
                 className="absolute top-0 left-0 w-full h-full rounded-3xl shadow-2xl"
@@ -30,11 +35,6 @@ export const HeroSection = () => {
                 allowFullScreen
               ></iframe>
             </div>
-            <img 
-              src="/lovable-uploads/ae287fa0-06e4-4b0b-925d-10a48fd6c375.png"
-              alt="Brodie the Picasso Dog"
-              className="rounded-3xl shadow-2xl max-w-[500px] w-full hover:scale-105 transition-transform duration-300"
-            />
           </div>
         </div>
       </div>
