@@ -1,14 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 import { Card } from "./ui/card";
-import {
-  Area,
-  AreaChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { useEffect } from "react";
 
 const fetchTokenPrice = async () => {
   const response = await fetch(
@@ -39,6 +32,41 @@ export const TokenPrice = () => {
     queryFn: fetchTokenPrice,
     refetchInterval: 30000, // Refetch every 30 seconds
   });
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
+    script.async = true;
+    script.innerHTML = `
+      {
+        "autosize": true,
+        "symbol": "RAYDIUM:BRODIESOL",
+        "interval": "15",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "enable_publishing": false,
+        "hide_top_toolbar": true,
+        "hide_legend": true,
+        "save_image": false,
+        "calendar": false,
+        "hide_volume": false,
+        "support_host": "https://www.tradingview.com"
+      }`;
+    
+    const container = document.getElementById("tradingview-widget");
+    if (container) {
+      container.appendChild(script);
+    }
+
+    return () => {
+      if (container && script) {
+        container.removeChild(script);
+      }
+    };
+  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -78,31 +106,10 @@ export const TokenPrice = () => {
       </div>
       
       <Card className="p-4">
-        <div className="h-[200px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart
-              data={[
-                { time: "24h", price: priceUsd * (1 + priceChange24h/100) },
-                { time: "now", price: priceUsd },
-              ]}
-            >
-              <XAxis dataKey="time" />
-              <YAxis 
-                domain={['auto', 'auto']}
-                tickFormatter={(value) => `$${formatPrice(value)}`}
-              />
-              <Tooltip 
-                formatter={(value: number) => [`$${formatPrice(value)}`, "Price"]}
-              />
-              <Area
-                type="monotone"
-                dataKey="price"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.3}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+        <div className="h-[400px] w-full" id="tradingview-widget">
+          <div className="tradingview-widget-container">
+            <div className="tradingview-widget-container__widget"></div>
+          </div>
         </div>
       </Card>
     </div>
