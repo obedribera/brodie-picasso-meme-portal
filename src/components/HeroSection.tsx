@@ -44,7 +44,7 @@ export const HeroSection = () => {
                 <TikTokIcon />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/bestboybrodie/?igsh=MWRoZ2l0OW42em9nYg%3D%3D" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition-colors"
