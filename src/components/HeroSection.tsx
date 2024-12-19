@@ -56,7 +56,7 @@ export const HeroSection = () => {
               href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full text-xl font-bold flex items-center gap-2 transition-all hover:gap-4"
+              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-full text-base font-bold flex items-center gap-2 transition-all hover:gap-4"
             >
               Buy $BRODIE
               <ArrowRight className="w-6 h-6" />
