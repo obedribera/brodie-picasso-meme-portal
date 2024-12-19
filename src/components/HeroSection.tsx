@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Twitter, Instagram } from "lucide-react";
 
 export const HeroSection = () => {
   return (
@@ -12,9 +12,27 @@ export const HeroSection = () => {
             <p className="text-2xl md:text-4xl mb-8 text-foreground">
               The Picasso Dog Token
             </p>
-            <p className="text-xl mb-12 text-gray-600">
+            <p className="text-xl mb-8 text-gray-600">
               A spunky partially blind rescue pup who looks a bit like a Picasso masterpiece
             </p>
+            <div className="flex items-center gap-6 mb-8">
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                <Twitter className="w-8 h-8" />
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                <Instagram className="w-8 h-8" />
+              </a>
+            </div>
             <a 
               href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
               target="_blank"
