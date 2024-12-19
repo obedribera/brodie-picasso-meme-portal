@@ -51,5 +51,5 @@
   left: 0;
   z-index: 0;
   pointer-events: none;
-  background-color: #ff0000;
+  background-color: #ff0000 !important;
 }
