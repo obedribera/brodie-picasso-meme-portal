@@ -63,11 +63,18 @@ export const HeroSection = () => {
             </a>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4">
-            <img 
-              src="/lovable-uploads/ae287fa0-06e4-4b0b-925d-10a48fd6c375.png"
-              alt="Brodie the Picasso Dog"
-              className="rounded-3xl shadow-2xl max-w-[500px] w-full hover:scale-105 transition-transform duration-300"
-            />
+            <div className="grid grid-cols-2 gap-4">
+              <img 
+                src="/lovable-uploads/ae287fa0-06e4-4b0b-925d-10a48fd6c375.png"
+                alt="Brodie the Picasso Dog"
+                className="rounded-3xl shadow-2xl w-full hover:scale-105 transition-transform duration-300"
+              />
+              <img 
+                src="/lovable-uploads/ec5afcd9-1271-49ca-a58f-a60c21a88b6a.png"
+                alt="Picasso Artwork"
+                className="rounded-3xl shadow-2xl w-full hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <div className="hidden">
               <iframe
                 src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&loop=1&playlist=e8nABOXvQN8"
