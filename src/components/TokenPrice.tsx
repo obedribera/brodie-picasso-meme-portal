@@ -51,16 +51,8 @@ export const TokenPrice = () => {
   const priceChange24h = pair.priceChange.h24;
   const isPriceUp = priceChange24h > 0;
 
-  // Create price data points for the chart
-  const priceData = [
-    { time: "24h ago", price: priceUsd * (1 - priceChange24h/100) },
-    { time: "12h ago", price: priceUsd * (1 - priceChange24h/200) },
-    { time: "6h ago", price: priceUsd * (1 - priceChange24h/400) },
-    { time: "now", price: priceUsd },
-  ];
-
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-4">
+    <div className="w-full max-w-3xl mx-auto space-y-4">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="p-4">
           <div className="text-sm text-muted-foreground">Price</div>
@@ -86,9 +78,14 @@ export const TokenPrice = () => {
       </div>
       
       <Card className="p-4">
-        <div className="h-[400px] w-full">
+        <div className="h-[200px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={priceData}>
+            <AreaChart
+              data={[
+                { time: "24h", price: priceUsd * (1 + priceChange24h/100) },
+                { time: "now", price: priceUsd },
+              ]}
+            >
               <XAxis dataKey="time" />
               <YAxis 
                 domain={['auto', 'auto']}
@@ -100,9 +97,9 @@ export const TokenPrice = () => {
               <Area
                 type="monotone"
                 dataKey="price"
-                stroke={isPriceUp ? "#22c55e" : "#ef4444"}
-                fill={isPriceUp ? "#22c55e" : "#ef4444"}
-                fillOpacity={0.2}
+                stroke="#8884d8"
+                fill="#8884d8"
+                fillOpacity={0.3}
               />
             </AreaChart>
           </ResponsiveContainer>

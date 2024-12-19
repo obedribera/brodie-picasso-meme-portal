@@ -1,4 +1,4 @@
-import { ArrowRight, Instagram, ChartCandlestick, ShoppingCart } from "lucide-react";
+import { ArrowRight, Instagram } from "lucide-react";
 import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
@@ -8,10 +8,6 @@ export const HeroSection = () => {
   return (
     <div className="min-h-screen pt-20 flex flex-col items-center justify-center bg-gradient-to-b from-accent to-white">
       <div className="container mx-auto px-4 text-center">
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <ChartCandlestick className="w-8 h-8 text-primary" />
-          <ShoppingCart className="w-8 h-8 text-primary" />
-        </div>
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
           <div className="md:w-1/2 text-left">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-primary animate-bounce-slow">
@@ -57,6 +53,15 @@ export const HeroSection = () => {
                 <Instagram className="w-8 h-8" />
               </a>
             </div>
+            <a 
+              href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4"
+            >
+              Buy $BRODIE
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4">
             <div className="grid grid-cols-2 gap-4">
@@ -74,15 +79,6 @@ export const HeroSection = () => {
             <TokenPrice />
           </div>
         </div>
-        <a 
-          href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-8 right-8 bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 shadow-lg"
-        >
-          Buy $BRODIE
-          <ArrowRight className="w-4 h-4" />
-        </a>
       </div>
     </div>
   );
