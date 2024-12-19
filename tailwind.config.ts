@@ -26,23 +26,23 @@ export default {
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "#8B5CF6", // Vivid Purple
-          foreground: "#ffffff",
+          foreground: "#1A1F2C", // Dark background instead of white
         },
         secondary: {
           DEFAULT: "#1EAEDB", // Bright Blue
-          foreground: "#ffffff",
+          foreground: "#1A1F2C", // Dark background instead of white
         },
         accent: {
           DEFAULT: "#1A1F2C", // Dark Purple
-          foreground: "#ffffff",
+          foreground: "#8B5CF6", // Light purple instead of white
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          foreground: "#1A1F2C", // Dark background instead of white
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "#9b87f5", // Light purple instead of white
         },
       },
       keyframes: {
