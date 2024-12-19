@@ -2,6 +2,7 @@ import { ArrowRight, Instagram } from "lucide-react";
 import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
+import { TokenPrice } from "./TokenPrice";
 
 export const HeroSection = () => {
   return (
@@ -15,7 +16,8 @@ export const HeroSection = () => {
             <p className="text-2xl md:text-4xl mb-8 text-foreground">
               The Picasso Dog Token
             </p>
-            <p className="text-xl mb-8 text-gray-600">
+            <TokenPrice />
+            <p className="text-xl mb-8 text-gray-600 mt-4">
               A spunky partially blind rescue pup who looks a bit like a Picasso masterpiece
             </p>
             <div className="flex items-center gap-6 mb-8">
