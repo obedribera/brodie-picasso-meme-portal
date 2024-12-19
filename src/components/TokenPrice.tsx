@@ -8,6 +8,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  CandlestickChart,
+  Candlestick,
 } from "recharts";
 
 const fetchTokenPrice = async () => {
@@ -51,8 +53,26 @@ export const TokenPrice = () => {
   const priceChange24h = pair.priceChange.h24;
   const isPriceUp = priceChange24h > 0;
 
+  // Mock candlestick data (since the API doesn't provide OHLC data)
+  const candlestickData = [
+    {
+      time: "15m ago",
+      open: priceUsd * 0.98,
+      high: priceUsd * 1.02,
+      low: priceUsd * 0.97,
+      close: priceUsd,
+    },
+    {
+      time: "now",
+      open: priceUsd * 0.99,
+      high: priceUsd * 1.01,
+      low: priceUsd * 0.98,
+      close: priceUsd * (1 + priceChange24h/100),
+    },
+  ];
+
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4">
+    <div className="w-full max-w-4xl mx-auto space-y-4">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="p-4">
           <div className="text-sm text-muted-foreground">Price</div>
@@ -78,14 +98,9 @@ export const TokenPrice = () => {
       </div>
       
       <Card className="p-4">
-        <div className="h-[200px] w-full">
+        <div className="h-[400px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart
-              data={[
-                { time: "24h", price: priceUsd * (1 + priceChange24h/100) },
-                { time: "now", price: priceUsd },
-              ]}
-            >
+            <CandlestickChart data={candlestickData}>
               <XAxis dataKey="time" />
               <YAxis 
                 domain={['auto', 'auto']}
@@ -94,14 +109,16 @@ export const TokenPrice = () => {
               <Tooltip 
                 formatter={(value: number) => [`$${formatPrice(value)}`, "Price"]}
               />
-              <Area
-                type="monotone"
-                dataKey="price"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.3}
+              <Candlestick
+                fill="#ef4444"
+                stroke="#ef4444"
+                wickStroke="#ef4444"
+                yAccessor={(data) => data.low}
+                upFill="#22c55e"
+                upStroke="#22c55e"
+                upWickStroke="#22c55e"
               />
-            </AreaChart>
+            </CandlestickChart>
           </ResponsiveContainer>
         </div>
       </Card>
