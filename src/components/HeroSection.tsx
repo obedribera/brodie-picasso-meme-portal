@@ -20,7 +20,7 @@ export const HeroSection = () => {
             </p>
             <div className="flex items-center gap-6 mb-8">
               <a 
-                href="https://twitter.com" 
+                href="https://x.com/brodie52218" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition-colors"
