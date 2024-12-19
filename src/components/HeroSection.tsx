@@ -13,7 +13,7 @@ export const HeroSection = () => {
               The Picasso Dog Token
             </p>
             <p className="text-xl mb-12 text-gray-600">
-              Join the pack and become part of the most creative community in crypto!
+              A spunky partially blind rescue pup who looks a bit like a Picasso masterpiece
             </p>
             <button className="bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full text-xl font-bold flex items-center gap-2 transition-all hover:gap-4">
               Buy $BRODIE
