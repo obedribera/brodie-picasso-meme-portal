@@ -20,7 +20,7 @@ export const AboutSection = () => {
   ];
 
   return (
-    <div className="py-20 bg-gradient-to-br from-[#E5DEFF] to-[#FDE1D3]" id="about">
+    <div className="py-20 bg-white" id="about">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-primary">
           About Brodie
@@ -29,7 +29,7 @@ export const AboutSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm text-center hover:transform hover:scale-105 transition-all shadow-lg"
+              className="p-8 rounded-2xl bg-accent/30 text-center hover:transform hover:scale-105 transition-all"
             >
               <div className="flex justify-center mb-4">{feature.icon}</div>
               <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
