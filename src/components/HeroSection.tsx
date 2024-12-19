@@ -2,6 +2,7 @@ import { ArrowRight, Instagram } from "lucide-react";
 import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
+import { TokenPrice } from "./TokenPrice";
 
 export const HeroSection = () => {
   return (
@@ -56,10 +57,10 @@ export const HeroSection = () => {
               href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-full text-base font-bold flex items-center gap-2 transition-all hover:gap-4"
+              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4"
             >
               Buy $BRODIE
-              <ArrowRight className="w-6 h-6" />
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4">
@@ -75,14 +76,7 @@ export const HeroSection = () => {
                 className="rounded-3xl shadow-2xl w-full hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="hidden">
-              <iframe
-                src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&loop=1&playlist=e8nABOXvQN8"
-                title="Brodie Token Audio"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <TokenPrice />
           </div>
         </div>
       </div>
