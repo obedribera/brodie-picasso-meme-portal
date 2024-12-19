@@ -6,7 +6,7 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative z-10">
+    <div className="min-h-screen relative z-10 text-white">
       <ParticlesBackground />
       <Navigation />
       <HeroSection />
