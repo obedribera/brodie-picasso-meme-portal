@@ -1,4 +1,4 @@
-import { ArrowRight, Instagram } from "lucide-react";
+import { ArrowRight, Instagram, GamepadIcon } from "lucide-react";
 import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
@@ -53,15 +53,24 @@ export const HeroSection = () => {
                 <Instagram className="w-8 h-8" />
               </a>
             </div>
-            <a 
-              href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-secondary hover:bg-secondary/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200 animate-bounce"
-            >
-              Buy $BRODIE
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            <div className="flex flex-col gap-4">
+              <a 
+                href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-secondary hover:bg-secondary/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200 animate-bounce"
+              >
+                Buy $BRODIE
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a 
+                href="#"
+                className="inline-block bg-accent hover:bg-accent/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200"
+              >
+                Game
+                <GamepadIcon className="w-4 h-4" />
+              </a>
+            </div>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4 animate-fade-in">
             <div className="grid grid-cols-2 gap-4">
