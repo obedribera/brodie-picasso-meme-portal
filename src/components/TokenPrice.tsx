@@ -41,7 +41,7 @@ export const TokenPrice = () => {
     script.innerHTML = `
       {
         "autosize": true,
-        "symbol": "RAYDIUM:BRODIESOL",
+        "symbol": "RAYDIUMV3:BRODIE/SOL",
         "interval": "15",
         "timezone": "Etc/UTC",
         "theme": "light",
