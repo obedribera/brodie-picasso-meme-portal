@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 import { Card } from "./ui/card";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const fetchTokenPrice = async () => {
   const response = await fetch(
@@ -33,6 +33,8 @@ export const TokenPrice = () => {
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -59,11 +61,12 @@ export const TokenPrice = () => {
     const container = document.getElementById("tradingview-widget");
     if (container) {
       container.appendChild(script);
+      scriptRef.current = script;
     }
 
     return () => {
-      if (container && script) {
-        container.removeChild(script);
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.parentNode.removeChild(scriptRef.current);
       }
     };
   }, []);
