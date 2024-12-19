@@ -15,10 +15,15 @@ export const HeroSection = () => {
             <p className="text-xl mb-12 text-gray-600">
               A spunky partially blind rescue pup who looks a bit like a Picasso masterpiece
             </p>
-            <button className="bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full text-xl font-bold flex items-center gap-2 transition-all hover:gap-4">
+            <a 
+              href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full text-xl font-bold flex items-center gap-2 transition-all hover:gap-4"
+            >
               Buy $BRODIE
               <ArrowRight className="w-6 h-6" />
-            </button>
+            </a>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4">
             <img 
