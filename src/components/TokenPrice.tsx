@@ -52,7 +52,7 @@ export const TokenPrice = () => {
   const isPriceUp = priceChange24h > 0;
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4">
+    <div className="w-full max-w-4xl mx-auto space-y-4">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="p-4">
           <div className="text-sm text-muted-foreground">Price</div>
@@ -78,7 +78,7 @@ export const TokenPrice = () => {
       </div>
       
       <Card className="p-4">
-        <div className="h-[200px] w-full">
+        <div className="h-[400px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={[
