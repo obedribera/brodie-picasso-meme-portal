@@ -11,7 +11,7 @@ export const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
           <div className="md:w-1/2 text-left">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-primary animate-pulse">
-              🎨 Brodie
+              🎨 Brodies Friends
             </h1>
             <p className="text-2xl md:text-4xl mb-8 text-foreground animate-fade-in">
               The Picasso Dog Token
@@ -59,7 +59,7 @@ export const HeroSection = () => {
               rel="noopener noreferrer"
               className="inline-block bg-secondary hover:bg-secondary/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200 animate-bounce"
             >
-              Buy $BRODIE
+              Buy $BRODIES FRIENDS
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

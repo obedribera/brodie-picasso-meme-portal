@@ -34,7 +34,7 @@ export const Navigation = () => {
   return (
     <nav className="bg-white/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-primary">$BRODIE</div>
+        <div className="text-2xl font-bold text-primary">$BRODIES FRIENDS</div>
         
         <div className="flex items-center gap-4">
           {/* Social Icons */}
