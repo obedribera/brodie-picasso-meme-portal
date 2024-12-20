@@ -16,6 +16,9 @@ const fetchTokenPrice = async () => {
   );
   const data = await response.json();
   console.log("Token price data:", data);
+  if (!data.pairs || data.pairs.length === 0) {
+    throw new Error("No price data available");
+  }
   return data;
 };
 
@@ -51,19 +54,35 @@ const generateHourlyPrices = (startPrice: number, endPrice: number, hours: numbe
 };
 
 export const TokenPrice = () => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["tokenPrice"],
     queryFn: fetchTokenPrice,
     refetchInterval: 30000, // Refetch every 30 seconds
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="w-full max-w-4xl mx-auto p-8">
+        <Card className="p-8">
+          <div className="text-center text-xl">Loading price data...</div>
+        </Card>
+      </div>
+    );
   }
 
-  const pair = data?.pairs[0];
-  if (!pair) return null;
+  if (isError) {
+    return (
+      <div className="w-full max-w-4xl mx-auto p-8">
+        <Card className="p-8">
+          <div className="text-center text-xl text-red-500">
+            Unable to load price data. Please try again later.
+          </div>
+        </Card>
+      </div>
+    );
+  }
 
+  const pair = data.pairs[0];
   const priceUsd = parseFloat(pair.priceUsd);
   const priceChange24h = pair.priceChange.h24;
   const isPriceUp = priceChange24h > 0;
