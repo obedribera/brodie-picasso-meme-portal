@@ -25,15 +25,15 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#E3442D", // Picasso's signature red
+          DEFAULT: "#8B5CF6", // Changed to vivid purple
           foreground: "#1A1F2C",
         },
         secondary: {
-          DEFAULT: "#F4C430", // Rich yellow often used in his works
+          DEFAULT: "#D946EF", // Changed to magenta pink
           foreground: "#1A1F2C",
         },
         accent: {
-          DEFAULT: "#4B8CC8", // Picasso blue period inspired
+          DEFAULT: "#0EA5E9", // Changed to ocean blue
           foreground: "#1A1F2C",
         },
         destructive: {

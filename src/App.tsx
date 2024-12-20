@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { BackgroundAudio } from "@/components/BackgroundAudio";
 import Index from "./pages/Index";
-import Game from "./pages/Game";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +19,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/game" element={<Game />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
