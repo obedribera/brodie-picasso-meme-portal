@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { RoadmapSection } from "@/components/RoadmapSection";
 import { useEffect, useRef } from "react";
+import { BackgroundAudio } from "@/components/BackgroundAudio";
 
 const Index = () => {
   const videoRef = useRef<HTMLIFrameElement>(null);
@@ -13,6 +14,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
+      <BackgroundAudio />
       <Navigation />
       <HeroSection />
       <AboutSection />
