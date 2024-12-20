@@ -5,15 +5,10 @@ import { RoadmapSection } from "@/components/RoadmapSection";
 import { useEffect, useRef } from "react";
 
 const Index = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      console.log("Video element loaded");
-      videoRef.current.play().catch(error => {
-        console.log("Video playback error:", error);
-      });
-    }
+    console.log("Video section mounted");
   }, []);
 
   return (
@@ -23,18 +18,14 @@ const Index = () => {
       <AboutSection />
       <RoadmapSection />
       <div className="w-full max-w-4xl mx-auto p-4 mb-20">
-        <video 
+        <iframe
           ref={videoRef}
-          className="w-full rounded-2xl shadow-xl"
-          autoPlay 
-          loop 
-          playsInline
-          muted
-          controls
-        >
-          <source src="https://www.youtube.com/embed/e8nABOXvQN8" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          className="w-full aspect-video rounded-2xl shadow-xl"
+          src="https://www.youtube.com/embed/e8nABOXvQN8"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       </div>
     </div>
   );
