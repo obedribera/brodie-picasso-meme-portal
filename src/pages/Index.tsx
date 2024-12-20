@@ -32,7 +32,7 @@ const Index = () => {
           muted
           controls
         >
-          <source src="https://stream-conversion.gpteng.co/?url=https://youtu.be/e8nABOXvQN8?si=RiXUHy6q9z2v3dau" type="video/mp4" />
+          <source src="https://www.youtube.com/embed/e8nABOXvQN8" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
