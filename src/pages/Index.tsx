@@ -22,7 +22,7 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <RoadmapSection />
-      <div className="w-full max-w-4xl mx-auto mb-20">
+      <div className="w-full max-w-4xl mx-auto p-4 mb-20">
         <video 
           ref={videoRef}
           className="w-full rounded-2xl shadow-xl"
@@ -32,7 +32,7 @@ const Index = () => {
           muted
           controls
         >
-          <source src="https://stream-conversion.gpteng.co/?url=https://youtu.be/e8nABOXvQN8" type="video/mp4" />
+          <source src="https://stream-conversion.gpteng.co/?url=https://youtu.be/e8nABOXvQN8?si=RiXUHy6q9z2v3dau" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
