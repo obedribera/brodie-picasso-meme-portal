@@ -13,8 +13,11 @@ export const HeroSection = () => {
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-primary animate-pulse">
               🎨 Brodies Friends
             </h1>
-            <p className="text-2xl md:text-4xl mb-8 text-foreground animate-fade-in">
+            <p className="text-2xl md:text-4xl mb-4 text-foreground animate-fade-in">
               The Picasso Dog Token
+            </p>
+            <p className="text-sm md:text-base mb-8 text-muted-foreground font-mono break-all">
+              6VxQVitDxoQMtmCG4jRCZKxJQBEfvhDEsMFyorQPpump
             </p>
             <p className="text-xl mb-8 text-muted-foreground animate-slide-in-right">
               A spunky partially blind rescue pup who looks a bit like a Picasso masterpiece
