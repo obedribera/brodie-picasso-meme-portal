@@ -29,7 +29,7 @@ export const HeroSection = () => {
                 <XIcon />
               </a>
               <a 
-                href="https://t.me/BrodieOfficialCTO" 
+                href="https://t.me/brodiesfriends" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:text-primary/80 transition-colors hover:scale-110 transform duration-200"
