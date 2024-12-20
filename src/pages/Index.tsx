@@ -21,7 +21,7 @@ const Index = () => {
         <iframe
           ref={videoRef}
           className="w-full aspect-video rounded-2xl shadow-xl"
-          src="https://www.youtube.com/embed/e8nABOXvQN8"
+          src="https://www.youtube.com/embed/e8nABOXvQN8?autoplay=1&mute=1"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
