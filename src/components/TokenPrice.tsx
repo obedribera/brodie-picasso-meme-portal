@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  Card,
   LineChart,
   Line,
   XAxis,
@@ -8,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { Card } from "@/components/ui/card";
 
 const fetchTokenPrice = async () => {
   try {
