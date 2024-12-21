@@ -11,15 +11,48 @@ import {
 } from "recharts";
 
 const fetchTokenPrice = async () => {
-  const response = await fetch(
-    `https://api.dexscreener.com/latest/dex/tokens/6VxQVitDxoQMtmCG4jRCZKxJQBEfvhDEsMFyorQPpump`
-  );
-  const data = await response.json();
-  console.log("Token price data:", data);
-  if (!data.pairs || data.pairs.length === 0) {
-    throw new Error("No price data available");
+  try {
+    console.log("Fetching token data from Solscan...");
+    const response = await fetch(
+      `https://public-api.solscan.io/token/meta?tokenAddress=6VxQVitDxoQMtmCG4jRCZKxJQBEfvhDEsMFyorQPpump`,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0',
+        }
+      }
+    );
+    
+    const priceResponse = await fetch(
+      `https://public-api.solscan.io/market/token/6VxQVitDxoQMtmCG4jRCZKxJQBEfvhDEsMFyorQPpump`,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0',
+        }
+      }
+    );
+
+    const [metaData, priceData] = await Promise.all([
+      response.json(),
+      priceResponse.json()
+    ]);
+
+    console.log("Solscan token metadata:", metaData);
+    console.log("Solscan price data:", priceData);
+
+    if (!priceData || !metaData) {
+      throw new Error("No price data available");
+    }
+
+    return {
+      meta: metaData,
+      price: priceData
+    };
+  } catch (error) {
+    console.error("Error fetching Solscan data:", error);
+    throw error;
   }
-  return data;
 };
 
 const formatPrice = (price: number) => {
@@ -82,10 +115,10 @@ export const TokenPrice = () => {
     );
   }
 
-  const pair = data.pairs[0];
-  const priceUsd = parseFloat(pair.priceUsd);
-  const priceChange24h = pair.priceChange.h24;
+  const priceUsd = data.price.priceUsd || 0;
+  const priceChange24h = data.price.priceChange24h || 0;
   const isPriceUp = priceChange24h > 0;
+  const marketCap = data.price.marketCap || 0;
 
   // Generate 24 hourly price points
   const pricePoints = generateHourlyPrices(
@@ -112,11 +145,11 @@ export const TokenPrice = () => {
         </Card>
         <Card className="p-4">
           <div className="text-sm text-muted-foreground">Market Cap</div>
-          <div className="text-xl font-bold">{formatMarketCap(pair.marketCap)}</div>
+          <div className="text-xl font-bold">{formatMarketCap(marketCap)}</div>
         </Card>
         <Card className="p-4">
           <div className="text-sm text-muted-foreground">Symbol</div>
-          <div className="text-xl font-bold">{pair.baseToken.symbol}</div>
+          <div className="text-xl font-bold">{data.meta.symbol || "BFRND"}</div>
         </Card>
       </div>
       
