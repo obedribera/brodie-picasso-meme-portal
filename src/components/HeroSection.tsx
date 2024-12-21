@@ -20,7 +20,9 @@ export const HeroSection = () => {
               6VxQVitDxoQMtmCG4jRCZKxJQBEfvhDEsMFyorQPpump
             </p>
             <p className="text-xl mb-8 text-muted-foreground animate-slide-in-right">
-              A spunky partially blind rescue pup who looks a bit like a Picasso masterpiece
+              We are $BFRND - Brodie's Friends, a community-driven project born out of resilience and determination. I stepped into the role of CTO after the original developer of $Brodie abandoned the project, leaving it in disarray.
+              <br /><br />
+              Despite our efforts to move the project forward, progress was hindered by the discovery of multiple insider wallets. These wallets were consistently selling off any gains, stifling the project's potential to grow. Faced with these challenges, we decided to create $BFRND—a fresh start and a commitment to building a trustworthy and transparent ecosystem where the community truly comes first.
             </p>
             <div className="flex items-center gap-6 mb-8 animate-fade-in">
               <a 
