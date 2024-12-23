@@ -3,6 +3,7 @@ import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
 import { TokenPrice } from "./TokenPrice";
+import { WalletBalance } from "./WalletBalance";
 
 export const HeroSection = () => {
   return (
@@ -76,6 +77,7 @@ export const HeroSection = () => {
                 className="rounded-3xl shadow-2xl w-full hover:scale-105 transition-transform duration-300 animate-float-delayed"
               />
             </div>
+            <WalletBalance />
             <TokenPrice />
           </div>
         </div>
