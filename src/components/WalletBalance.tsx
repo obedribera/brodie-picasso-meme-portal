@@ -5,19 +5,25 @@ import { useQuery } from '@tanstack/react-query';
 
 const WALLET_ADDRESS = '4e3kjUPi55QUakwrr5SRhuBsUb8tcp2jZSkS6szqFSk6';
 const TOKEN_MINT_ADDRESS = '22UaSSL6c6TYLexhaxWisq2mDaRTzNDX1X222anPpump';
-const SOLANA_RPC_URL = 'https://api.mainnet-beta.solana.com';
+const SOLANA_RPC_URL = 'https://ssc-dao.genesysgo.net';
 
 const fetchBalances = async () => {
   console.log('Fetching balances...');
   try {
-    const connection = new Connection(SOLANA_RPC_URL, 'confirmed');
+    const connection = new Connection(SOLANA_RPC_URL, {
+      commitment: 'confirmed',
+      confirmTransactionInitialTimeout: 60000,
+    });
+    
     const publicKey = new PublicKey(WALLET_ADDRESS);
     
     // Fetch SOL balance
+    console.log('Fetching SOL balance...');
     const solBalance = await connection.getBalance(publicKey);
     console.log('SOL balance (lamports):', solBalance);
 
     // Fetch token accounts
+    console.log('Fetching token accounts...');
     const tokenAccounts = await connection.getParsedTokenAccountsByOwner(publicKey, {
       programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'),
     });
@@ -28,6 +34,8 @@ const fetchBalances = async () => {
     const brodieAccount = tokenAccounts.value.find(
       account => account.account.data.parsed.info.mint === TOKEN_MINT_ADDRESS
     );
+
+    console.log('Brodie account:', brodieAccount);
 
     const brodieBalance = brodieAccount 
       ? Number(brodieAccount.account.data.parsed.info.tokenAmount.amount) / 
