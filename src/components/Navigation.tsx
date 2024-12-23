@@ -56,7 +56,7 @@ export const Navigation = () => {
               <TelegramIcon />
             </a>
             <a 
-              href="https://tiktok.com" 
+              href="https://www.tiktok.com/@bestboybrodie?is_from_webapp=1&sender_device=pc" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"
