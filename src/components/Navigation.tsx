@@ -34,13 +34,13 @@ export const Navigation = () => {
   return (
     <nav className="bg-white/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-primary">$BRODIES FRIENDS</div>
+        <div className="text-2xl font-bold text-primary">$BRODIE</div>
         
         <div className="flex items-center gap-4">
           {/* Social Icons */}
           <div className="hidden md:flex items-center gap-4">
             <a 
-              href="https://x.com/brodie52218" 
+              href="https://x.com/Brodie_CTO_" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"
@@ -48,7 +48,7 @@ export const Navigation = () => {
               <XIcon />
             </a>
             <a 
-              href="https://t.me/brodiesfriends" 
+              href="https://t.me/BrodieOfficialCTO" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"
@@ -56,7 +56,7 @@ export const Navigation = () => {
               <TelegramIcon />
             </a>
             <a 
-              href="https://tiktok.com" 
+              href="https://www.tiktok.com/@bestboybrodie?is_from_webapp=1&sender_device=pc" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"

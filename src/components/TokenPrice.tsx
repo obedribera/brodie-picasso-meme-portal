@@ -12,7 +12,7 @@ import {
 
 const fetchTokenPrice = async () => {
   const response = await fetch(
-    `https://api.dexscreener.com/latest/dex/tokens/6VxQVitDxoQMtmCG4jRCZKxJQBEfvhDEsMFyorQPpump`
+    `https://api.dexscreener.com/latest/dex/pairs/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu`
   );
   const data = await response.json();
   console.log("Token price data:", data);
