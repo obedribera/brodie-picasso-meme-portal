@@ -40,7 +40,7 @@ export const Navigation = () => {
           {/* Social Icons */}
           <div className="hidden md:flex items-center gap-4">
             <a 
-              href="https://x.com/brodie52218" 
+              href="https://x.com/Brodie_CTO_" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"
