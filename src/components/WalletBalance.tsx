@@ -5,14 +5,15 @@ import { useQuery } from '@tanstack/react-query';
 
 const WALLET_ADDRESS = '4e3kjUPi55QUakwrr5SRhuBsUb8tcp2jZSkS6szqFSk6';
 const TOKEN_MINT_ADDRESS = '22UaSSL6c6TYLexhaxWisq2mDaRTzNDX1X222anPpump';
-const SOLANA_RPC_URL = 'https://ssc-dao.genesysgo.net';
+const SOLANA_RPC_URL = 'https://solana-mainnet.rpc.extrnode.com';
 
 const fetchBalances = async () => {
   console.log('Fetching balances...');
   try {
-    const connection = new Connection(SOLANA_RPC_URL, {
+    const connection = new Connection('https://api.quicknode.com/graphql', {
       commitment: 'confirmed',
       confirmTransactionInitialTimeout: 60000,
+      wsEndpoint: 'wss://api.quicknode.com/graphql',
     });
     
     const publicKey = new PublicKey(WALLET_ADDRESS);
