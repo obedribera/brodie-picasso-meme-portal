@@ -10,7 +10,7 @@ const SOLANA_RPC_URL = 'https://api.mainnet-beta.solana.com';
 const fetchBalances = async () => {
   console.log('Fetching balances...');
   try {
-    const connection = new Connection('https://solana-mainnet.rpc.extrnode.com', 'confirmed');
+    const connection = new Connection('https://solana-api.projectserum.com', 'confirmed');
     const publicKey = new PublicKey(WALLET_ADDRESS);
     
     // Fetch SOL balance
