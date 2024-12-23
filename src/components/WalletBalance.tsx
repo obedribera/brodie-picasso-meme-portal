@@ -5,12 +5,12 @@ import { useQuery } from '@tanstack/react-query';
 
 const WALLET_ADDRESS = '4e3kjUPi55QUakwrr5SRhuBsUb8tcp2jZSkS6szqFSk6';
 const TOKEN_MINT_ADDRESS = '22UaSSL6c6TYLexhaxWisq2mDaRTzNDX1X222anPpump';
-const SOLANA_RPC_URL = 'https://api.devnet.solana.com';
+const SOLANA_RPC_URL = 'https://api.mainnet-beta.solana.com';
 
 const fetchBalances = async () => {
   console.log('Fetching balances...');
   try {
-    const connection = new Connection(SOLANA_RPC_URL, 'confirmed');
+    const connection = new Connection('https://solana-mainnet.rpc.extrnode.com', 'confirmed');
     const publicKey = new PublicKey(WALLET_ADDRESS);
     
     // Fetch SOL balance
