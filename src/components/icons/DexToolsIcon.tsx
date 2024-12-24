@@ -9,9 +9,7 @@ const DexToolsIcon = () => {
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M19.5 4.5L12 8.25L4.5 4.5L12 0.75L19.5 4.5Z" />
-      <path d="M19.5 12L12 15.75L4.5 12L12 8.25L19.5 12Z" />
-      <path d="M19.5 19.5L12 23.25L4.5 19.5L12 15.75L19.5 19.5Z" />
+      <path d="M12 2L7 5L2 8V16L7 19L12 22L17 19L22 16V8L17 5L12 2ZM17 8.5L12 11.5L7 8.5L12 5.5L17 8.5ZM6 15V10L11 13V18L6 15ZM13 18V13L18 10V15L13 18Z" />
     </svg>
   );
 };
