@@ -4,6 +4,7 @@ import { ArrowRight, Instagram } from "lucide-react";
 import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
+import DexToolsIcon from "./icons/DexToolsIcon";
 
 interface Tab {
   id: string;
@@ -71,6 +72,14 @@ export const Navigation = () => {
             >
               <Instagram className="w-6 h-6" />
             </a>
+            <a 
+              href="https://www.dextools.io/app/en/solana/pair-explorer/5SiQqcq4am9jsYfasHJv1WQBc7bfoDmAkUcYGNnWaHBu?t=1735025748940" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 transition-colors"
+            >
+              <DexToolsIcon />
+            </a>
           </div>
 
           {/* Navigation Tabs */}
@@ -93,7 +102,7 @@ export const Navigation = () => {
 
           {/* Buy Button */}
           <a 
-            href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
+            href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfoDmakucygnnwahbu"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-secondary hover:bg-secondary/90 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 transition-all hover:gap-2"
