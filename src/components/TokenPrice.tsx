@@ -11,15 +11,33 @@ import {
 } from "recharts";
 
 const fetchTokenPrice = async () => {
-  const response = await fetch(
-    `https://api.dexscreener.com/latest/dex/pairs/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu`
-  );
-  const data = await response.json();
-  console.log("Token price data:", data);
-  if (!data.pairs || data.pairs.length === 0) {
-    throw new Error("No price data available");
+  try {
+    console.log("Fetching token price data...");
+    const response = await fetch(
+      `https://api.dexscreener.com/latest/dex/pairs/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu`,
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        },
+      }
+    );
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log("Token price data:", data);
+    
+    if (!data.pairs || data.pairs.length === 0) {
+      throw new Error("No price data available");
+    }
+    return data;
+  } catch (error) {
+    console.error("Error fetching token price:", error);
+    throw error;
   }
-  return data;
 };
 
 const formatPrice = (price: number) => {
@@ -36,7 +54,6 @@ const formatMarketCap = (marketCap: number) => {
   return `$${marketCap.toLocaleString()}`;
 };
 
-// Generate hourly price points between two prices
 const generateHourlyPrices = (startPrice: number, endPrice: number, hours: number) => {
   const pricePoints = [];
   const priceDiff = endPrice - startPrice;
@@ -57,7 +74,9 @@ export const TokenPrice = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["tokenPrice"],
     queryFn: fetchTokenPrice,
-    refetchInterval: 30000, // Refetch every 30 seconds
+    refetchInterval: 30000,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 
   if (isLoading) {
@@ -87,11 +106,10 @@ export const TokenPrice = () => {
   const priceChange24h = pair.priceChange.h24;
   const isPriceUp = priceChange24h > 0;
 
-  // Generate 24 hourly price points
   const pricePoints = generateHourlyPrices(
-    priceUsd / (1 + priceChange24h/100), // Calculate price 24h ago
-    priceUsd, // Current price
-    24 // 24 hours
+    priceUsd / (1 + priceChange24h/100),
+    priceUsd,
+    24
   );
 
   return (
