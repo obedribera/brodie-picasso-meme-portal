@@ -73,7 +73,7 @@ export const Navigation = () => {
               <Instagram className="w-6 h-6" />
             </a>
             <a 
-              href="https://www.dextools.io/app/en/solana/pair-explorer/5SiQqcq4am9jsYfasHJv1WQBc7bfoDmAkUcYGNnWaHBu?t=1735025748940" 
+              href="https://www.dextools.io/app/en/solana/pair-explorer/5SiQqcq4am9jsYfasHJv1WQBc7bfoDmAkUcYGNnWaHBu?t=1735182372873" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 transition-colors"
