@@ -16,6 +16,9 @@ export const HeroSection = () => {
             <p className="text-2xl md:text-4xl mb-4 text-foreground animate-fade-in">
               The Picasso Dog Token
             </p>
+            <p className="text-sm md:text-base mb-2 text-muted-foreground">
+              Contract Address:
+            </p>
             <p className="text-sm md:text-base mb-8 text-muted-foreground font-mono break-all">
               22UaSSL6c6TYLexhaxWisq2mDaRTzNDX1X222anPpump
             </p>
@@ -53,15 +56,26 @@ export const HeroSection = () => {
                 <Instagram className="w-8 h-8" />
               </a>
             </div>
-            <a 
-              href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-secondary hover:bg-secondary/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200 animate-bounce"
-            >
-              Buy $BRODIE
-              <ArrowRight className="w-4 h-4" />
-            </a>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="https://dexscreener.com/solana/5siqqcq4am9jsyfashjv1wqbc7bfodmakucygnnwahbu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-secondary hover:bg-secondary/90 text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200 animate-bounce"
+              >
+                Buy $BRODIE
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a 
+                href="https://www.dextools.io/app/en/solana/pair-explorer/5SiQqcq4am9jsYfasHJv1WQBc7bfoDmAkUcYGNnWaHBu?t=1735182372873"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:gap-4 hover:scale-105 transform duration-200"
+              >
+                DexTools Chart
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
           <div className="md:w-1/2 flex flex-col gap-4 animate-fade-in">
             <div className="grid grid-cols-2 gap-4">
