@@ -38,9 +38,21 @@ CREATE POLICY "Allow vote updates"
   WITH CHECK (true);
 
 -- Enable public access to storage bucket
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('artworks', 'artworks', true)
+ON CONFLICT (id) DO UPDATE SET public = true;
+
+-- Drop existing storage policies
+DROP POLICY IF EXISTS "Allow public storage access" ON storage.objects;
+
+-- Create comprehensive storage policies
 CREATE POLICY "Allow public storage access"
   ON storage.objects
   FOR ALL
   TO public
   USING (bucket_id = 'artworks')
   WITH CHECK (bucket_id = 'artworks');
+
+-- Grant additional storage permissions
+GRANT ALL ON storage.objects TO public;
+GRANT ALL ON storage.buckets TO public;
