@@ -3,26 +3,18 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Heart, Share2 } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-// Mock data - replace with actual data from your backend
-const mockArtworks = [
-  {
-    id: "1",
-    title: "Brodie's Dream",
-    artistName: "CryptoArtist",
-    description: "A vibrant interpretation of Brodie's journey",
-    imageUrl: "/lovable-uploads/ae287fa0-06e4-4b0b-925d-10a48fd6c375.png",
-    votes: 156,
-  },
-  {
-    id: "2",
-    title: "Digital Picasso",
-    artistName: "NFTCreator",
-    description: "Inspired by Picasso's style",
-    imageUrl: "/lovable-uploads/ec5afcd9-1271-49ca-a58f-a60c21a88b6a.png",
-    votes: 89,
-  },
-];
+interface Artwork {
+  id: string;
+  title: string;
+  artist_name: string;
+  description: string;
+  image_url: string;
+  votes: number;
+  wallet_address: string;
+}
 
 interface ArtGalleryProps {
   selectedArtId?: string | null;
@@ -30,7 +22,54 @@ interface ArtGalleryProps {
 
 export const ArtGallery = ({ selectedArtId }: ArtGalleryProps) => {
   const { toast } = useToast();
-  const [votedArtworks, setVotedArtworks] = useState<string[]>([]);
+  const queryClient = useQueryClient();
+  const [votedArtworks, setVotedArtworks] = useState<string[]>(() => {
+    const saved = localStorage.getItem('votedArtworks');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const { data: artworks, isLoading, error } = useQuery({
+    queryKey: ['artworks'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('artworks')
+        .select('*')
+        .order('votes', { ascending: false });
+      
+      if (error) throw error;
+      return data as Artwork[];
+    },
+  });
+
+  const voteMutation = useMutation({
+    mutationFn: async (artworkId: string) => {
+      const { error } = await supabase
+        .from('artworks')
+        .update({ votes: artworks?.find(a => a.id === artworkId)?.votes + 1 })
+        .eq('id', artworkId);
+      
+      if (error) throw error;
+    },
+    onSuccess: (_, artworkId) => {
+      setVotedArtworks(prev => {
+        const updated = [...prev, artworkId];
+        localStorage.setItem('votedArtworks', JSON.stringify(updated));
+        return updated;
+      });
+      queryClient.invalidateQueries({ queryKey: ['artworks'] });
+      toast({
+        title: "Vote Recorded",
+        description: "Thank you for voting!",
+      });
+    },
+    onError: () => {
+      toast({
+        title: "Vote Failed",
+        description: "There was an error recording your vote. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
 
   const handleVote = (artworkId: string) => {
     if (votedArtworks.includes(artworkId)) {
@@ -41,11 +80,7 @@ export const ArtGallery = ({ selectedArtId }: ArtGalleryProps) => {
       return;
     }
 
-    setVotedArtworks([...votedArtworks, artworkId]);
-    toast({
-      title: "Vote Recorded",
-      description: "Thank you for voting!",
-    });
+    voteMutation.mutate(artworkId);
   };
 
   const handleShare = (artworkId: string) => {
@@ -57,9 +92,17 @@ export const ArtGallery = ({ selectedArtId }: ArtGalleryProps) => {
     });
   };
 
+  if (isLoading) {
+    return <div className="text-center">Loading artworks...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error loading artworks</div>;
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {mockArtworks.map((artwork) => (
+      {artworks?.map((artwork) => (
         <Card 
           key={artwork.id}
           className={`overflow-hidden transition-all duration-300 ${
@@ -68,14 +111,14 @@ export const ArtGallery = ({ selectedArtId }: ArtGalleryProps) => {
         >
           <CardHeader>
             <CardTitle className="flex justify-between items-center">
-              <span>{artwork.title}</span>
-              <span className="text-sm text-muted-foreground">by {artwork.artistName}</span>
+              <span>{artwork.title || "Untitled"}</span>
+              <span className="text-sm text-muted-foreground">by {artwork.artist_name}</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <img
-              src={artwork.imageUrl}
-              alt={artwork.title}
+              src={artwork.image_url}
+              alt={artwork.title || "Artwork"}
               className="w-full h-64 object-cover"
             />
             <p className="p-6 text-muted-foreground">{artwork.description}</p>
@@ -88,7 +131,7 @@ export const ArtGallery = ({ selectedArtId }: ArtGalleryProps) => {
               className="flex items-center gap-2"
             >
               <Heart className="w-4 h-4" />
-              <span>{artwork.votes + (votedArtworks.includes(artwork.id) ? 1 : 0)} votes</span>
+              <span>{artwork.votes} votes</span>
             </Button>
             <Button
               variant="ghost"

@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Upload } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { useQueryClient } from "@tanstack/react-query";
 
 const formSchema = z.object({
   artistName: z.string().min(2, "Name must be at least 2 characters"),
@@ -18,6 +20,7 @@ const formSchema = z.object({
 
 export const ArtSubmissionForm = () => {
   const { toast } = useToast();
+  const queryClient = useQueryClient();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -47,20 +50,52 @@ export const ArtSubmissionForm = () => {
     setIsSubmitting(true);
     
     try {
-      // TODO: Implement actual submission logic
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulated delay
+      if (!values.image) {
+        throw new Error("Please upload an image");
+      }
+
+      // Upload image to Supabase Storage
+      const fileExt = values.image.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const { data: imageData, error: uploadError } = await supabase.storage
+        .from('artworks')
+        .upload(fileName, values.image);
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL for the uploaded image
+      const { data: { publicUrl } } = supabase.storage
+        .from('artworks')
+        .getPublicUrl(fileName);
+
+      // Store artwork data in the database
+      const { error: insertError } = await supabase
+        .from('artworks')
+        .insert({
+          artist_name: values.artistName,
+          wallet_address: values.walletAddress,
+          description: values.description,
+          image_url: publicUrl,
+          votes: 0,
+        });
+
+      if (insertError) throw insertError;
       
       toast({
         title: "Submission Successful!",
         description: "Your artwork has been submitted for the contest. Share your unique link to get votes!",
       });
       
+      // Refresh the gallery data
+      queryClient.invalidateQueries({ queryKey: ['artworks'] });
+      
       form.reset();
       setPreviewUrl(null);
     } catch (error) {
+      console.error('Submission error:', error);
       toast({
         title: "Submission Failed",
-        description: "There was an error submitting your artwork. Please try again.",
+        description: error instanceof Error ? error.message : "There was an error submitting your artwork. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -156,4 +191,4 @@ export const ArtSubmissionForm = () => {
       </form>
     </Form>
   );
-};
+});
