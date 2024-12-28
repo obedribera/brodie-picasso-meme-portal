@@ -8,25 +8,38 @@ import { BackgroundAudio } from "@/components/BackgroundAudio";
 import Index from "./pages/Index";
 import Game from "./pages/Game";
 import Contest from "./pages/Contest";
+import { StrictMode } from "react";
 
-const queryClient = new QueryClient();
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      retry: 1,
+    },
+  },
+});
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <ParticlesBackground />
-      <BackgroundAudio />
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/contest" element={<Contest />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <ParticlesBackground />
+          <BackgroundAudio />
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/game" element={<Game />} />
+              <Route path="/contest" element={<Contest />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </StrictMode>
+  );
+};
 
 export default App;
