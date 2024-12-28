@@ -191,4 +191,4 @@ export const ArtSubmissionForm = () => {
       </form>
     </Form>
   );
-});
+};
