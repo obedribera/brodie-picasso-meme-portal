@@ -46,7 +46,7 @@ export const ArtSubmissionForm = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log("Submitting art:", values);
+    console.log("Starting art submission:", values);
     setIsSubmitting(true);
     
     try {
@@ -57,16 +57,28 @@ export const ArtSubmissionForm = () => {
       // Upload image to Supabase Storage
       const fileExt = values.image.name.split('.').pop();
       const fileName = `${Math.random()}.${fileExt}`;
+      console.log("Attempting to upload file:", fileName);
+
       const { data: imageData, error: uploadError } = await supabase.storage
         .from('artworks')
-        .upload(fileName, values.image);
+        .upload(fileName, values.image, {
+          cacheControl: '3600',
+          upsert: false
+        });
 
-      if (uploadError) throw uploadError;
+      if (uploadError) {
+        console.error("Storage upload error:", uploadError);
+        throw uploadError;
+      }
+
+      console.log("File uploaded successfully:", imageData);
 
       // Get public URL for the uploaded image
       const { data: { publicUrl } } = supabase.storage
         .from('artworks')
         .getPublicUrl(fileName);
+
+      console.log("Generated public URL:", publicUrl);
 
       // Store artwork data in the database
       const { error: insertError } = await supabase
@@ -79,7 +91,12 @@ export const ArtSubmissionForm = () => {
           votes: 0,
         });
 
-      if (insertError) throw insertError;
+      if (insertError) {
+        console.error("Database insert error:", insertError);
+        throw insertError;
+      }
+      
+      console.log("Artwork data inserted successfully");
       
       toast({
         title: "Submission Successful!",
