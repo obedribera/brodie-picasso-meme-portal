@@ -25,15 +25,15 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#8B5CF6", // Modern vibrant purple
+          DEFAULT: "#1EAEDB", // Modern bright blue
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#D946EF", // Modern magenta pink
+          DEFAULT: "#33C3F0", // Modern sky blue
           foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#0EA5E9", // Modern ocean blue
+          DEFAULT: "#403E43", // Modern charcoal gray
           foreground: "#FFFFFF",
         },
         destructive: {
