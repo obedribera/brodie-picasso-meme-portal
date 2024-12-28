@@ -19,8 +19,11 @@ export const HeroSection = () => {
               <h2 className="text-3xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Brodie's Redemption: The NFT Collection
               </h2>
-              <p className="text-lg md:text-xl text-foreground/80">
+              <p className="text-lg md:text-xl text-foreground/80 mb-2">
                 Join the Art Contest • Win $BRODIE Tokens • Become Part of History
+              </p>
+              <p className="text-sm md:text-base text-accent/90 font-medium">
+                Your Art Will Be Featured as an NFT with Revenue Share for Artists!
               </p>
               <span className="inline-block mt-4 text-primary font-semibold group-hover:underline">
                 Learn More →
