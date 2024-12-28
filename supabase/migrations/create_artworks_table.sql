@@ -12,14 +12,19 @@ CREATE TABLE IF NOT EXISTS artworks (
 -- Enable Row Level Security
 ALTER TABLE artworks ENABLE ROW LEVEL SECURITY;
 
--- Create policies
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Allow public read access" ON artworks;
+DROP POLICY IF EXISTS "Allow authenticated insert" ON artworks;
+DROP POLICY IF EXISTS "Allow vote updates" ON artworks;
+
+-- Create new policies
 CREATE POLICY "Allow public read access"
   ON artworks
   FOR SELECT
   TO public
   USING (true);
 
-CREATE POLICY "Allow authenticated insert"
+CREATE POLICY "Allow public insert"
   ON artworks
   FOR INSERT
   TO public
@@ -31,3 +36,11 @@ CREATE POLICY "Allow vote updates"
   TO public
   USING (true)
   WITH CHECK (true);
+
+-- Enable public access to storage bucket
+CREATE POLICY "Allow public storage access"
+  ON storage.objects
+  FOR ALL
+  TO public
+  USING (bucket_id = 'artworks')
+  WITH CHECK (bucket_id = 'artworks');
