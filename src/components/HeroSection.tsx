@@ -3,11 +3,32 @@ import TelegramIcon from "./icons/TelegramIcon";
 import TikTokIcon from "./icons/TikTokIcon";
 import XIcon from "./icons/XIcon";
 import { TokenPrice } from "./TokenPrice";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   return (
     <div className="min-h-screen pt-20 flex flex-col items-center justify-center bg-gradient-to-b from-accent to-background">
       <div className="container mx-auto px-4 text-center">
+        <Link 
+          to="/contest"
+          className="block mb-8 group"
+        >
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1 transition-all duration-300 hover:scale-105">
+            <div className="bg-background/90 backdrop-blur-sm rounded-xl p-6 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 animate-pulse" />
+              <h2 className="text-3xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Brodie's Redemption: The NFT Collection
+              </h2>
+              <p className="text-lg md:text-xl text-foreground/80">
+                Join the Art Contest • Win $BRODIE Tokens • Become Part of History
+              </p>
+              <span className="inline-block mt-4 text-primary font-semibold group-hover:underline">
+                Learn More →
+              </span>
+            </div>
+          </div>
+        </Link>
+
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
           <div className="md:w-1/2 text-left">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-primary animate-pulse">

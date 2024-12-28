@@ -7,6 +7,7 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { BackgroundAudio } from "@/components/BackgroundAudio";
 import Index from "./pages/Index";
 import Game from "./pages/Game";
+import Contest from "./pages/Contest";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/game" element={<Game />} />
+          <Route path="/contest" element={<Contest />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
