@@ -84,11 +84,28 @@ export const ArtGallery = ({ selectedArtId }: ArtGalleryProps) => {
   };
 
   const handleShare = (artworkId: string) => {
+    // Create the full URL for sharing, ensuring it points to the contest page
     const shareUrl = `${window.location.origin}/contest?art=${artworkId}`;
-    navigator.clipboard.writeText(shareUrl);
+    
+    // Use the Web Share API if available, otherwise fallback to clipboard
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check out this artwork!',
+        url: shareUrl
+      }).catch(() => {
+        // Fallback to clipboard if share is cancelled or fails
+        copyToClipboard(shareUrl);
+      });
+    } else {
+      copyToClipboard(shareUrl);
+    }
+  };
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
     toast({
-      title: "Link Copied",
-      description: "Share this link with others to get more votes!",
+      title: "Link Copied!",
+      description: "Share this link with others to show them the artwork!",
     });
   };
 
